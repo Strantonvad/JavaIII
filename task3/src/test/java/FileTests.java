@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 @DisplayName("Home work 3")
@@ -16,12 +17,12 @@ public class FileTests {
     @Before
     public void starter(){
         //change your path
-        pathToResource = "C:\\Users\\Mikhail\\IdeaProjects\\Java31\\task3\\src\\main\\resources\\";
+        pathToResource = "C:\\Geekbrains\\Java3\\task3\\src\\main\\resources\\";
         util = new FileUtility();
     }
 
     @Test
-    public void testSort(){
+    public void testSort() throws IOException {
         File input = new File(pathToResource + "array.txt");
         File output = new File(pathToResource + "arrayout.txt");
         util.sortEvenElements(input, output);
@@ -52,7 +53,7 @@ public class FileTests {
                 c3++;
             }
             if(pass.charAt(i) == '*' || pass.charAt(i) == '!' ||
-                    pass.charAt(i) == '%'){
+                pass.charAt(i) == '%'){
                 c4++;
             }
         }
@@ -60,7 +61,7 @@ public class FileTests {
     }
 
     @Test
-    public void testPassGen(){
+    public void testPassGen() throws IOException {
         File input = new File(pathToResource + "login.txt");
         File output = new File(pathToResource + "pass.txt");
         util.passwordGen(input, output);
@@ -79,10 +80,10 @@ public class FileTests {
     }
 
     @Test
-    public void testAppend(){
+    public void testAppend() throws IOException {
         File file = new File(pathToResource + "append.txt");
         ArrayList<String> list = new ArrayList<>();
-        for (int i = 4; i < 11; i++) {
+        for (int i = 1; i < 11; i++) {
             list.add("str" + i);
         }
         util.appender(file, list);
@@ -101,12 +102,12 @@ public class FileTests {
     }
 
     @Test
-    public void testNLines(){
+    public void testNLines() throws IOException {
         List<String> list =
-                util.getNString(pathToResource + "file.txt", 100);
+            util.getNString(pathToResource + "file.txt", 100);
         for (int i = 0; i < 100; i++) {
             Assert.assertEquals("Oleg message " + (i + 900),
-                    list.get(i).trim());
+                list.get(i).trim());
         }
     }
 }
